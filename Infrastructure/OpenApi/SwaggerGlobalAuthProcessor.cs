@@ -30,13 +30,13 @@ namespace Infrastructure.OpenApi
                     return true;
                 }
 
+                //if (context.OperationDescription.Operation.Security is null)
+                //{
+                //    context.OperationDescription.Operation.Security = [];
+                //}
+
+                // Before using Attribute: [ShouldHavePermission] anywhere in your app, otherwise Security.Count == 0 should work
                 if (context.OperationDescription.Operation.Security is null)
-                {
-                    context.OperationDescription.Operation.Security = [];
-                }
-
-
-                if (context.OperationDescription.Operation.Security.Count == 0)
                 {
                     (context.OperationDescription.Operation.Security ??= new List<OpenApiSecurityRequirement>())
                         .Add(new OpenApiSecurityRequirement
