@@ -8,7 +8,7 @@ namespace Infrastructure.OpenApi
     {
         public bool Process(OperationProcessorContext context)
         {
-            if (context.MethodInfo.GetCustomAttributes(typeof(SwaggerHeaderAttribute)) is SwaggerHeaderAttribute swaggerHeader)
+            if (context.MethodInfo.GetCustomAttribute(typeof(SwaggerHeaderAttribute)) is SwaggerHeaderAttribute swaggerHeader)
             {
                 var parameters = context.OperationDescription.Operation.Parameters;
 

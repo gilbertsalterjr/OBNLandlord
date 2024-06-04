@@ -8,7 +8,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Infrastructure.Persistance.DbConfigurations
+namespace Infrastructure.Persistence.DbConfigurations
 {
     internal class TenantOrgConfig : IEntityTypeConfiguration<TenantOrg>
     {

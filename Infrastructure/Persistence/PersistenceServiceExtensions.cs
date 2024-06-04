@@ -1,5 +1,5 @@
-﻿using Infrastructure.Persistance.Contexts;
-using Infrastructure.Persistance.DbInitializers;
+﻿using Infrastructure.Persistence.Contexts;
+using Infrastructure.Persistence.DbInitializers;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
@@ -9,9 +9,9 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Infrastructure.Persistance
+namespace Infrastructure.Persistence
 {
-    public static class PersistanceServiceExtensions
+    public static class PersistenceServiceExtensions
     {
         public static IServiceCollection AddPersistenceService(this IServiceCollection services, IConfiguration configuration)
         {

@@ -1,11 +1,10 @@
 
 using Infrastructure;
-using Infrastructure.Persistance;
+using Infrastructure.Persistence;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.Extensions.DependencyInjection;
 using System.Threading.Tasks;
 using Application;
-using System.Threading;
 
 namespace WebApi
 {
@@ -19,7 +18,6 @@ namespace WebApi
 
             builder.Services.AddControllers();
             builder.Services.AddApplicationServices();
-            // Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
             builder.Services.AddInfrastructureServices(builder.Configuration);            
 
             var app = builder.Build();
@@ -31,7 +29,7 @@ namespace WebApi
             
             app.UseHttpsRedirection();
 
-            app.UseAuthorization();            
+            //app.UseAuthorization();            
 
             app.MapControllers();
 

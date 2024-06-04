@@ -1,5 +1,5 @@
 ﻿using Finbuckle.MultiTenant.Stores;
-using Infrastructure.Persistance.DbConfigurations;
+using Infrastructure.Persistence.DbConfigurations;
 using Microsoft.EntityFrameworkCore;
 
 namespace Infrastructure.Tenancy

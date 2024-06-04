@@ -3,7 +3,7 @@ using Infrastructure.Tenancy;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.DependencyInjection;
 
-namespace Infrastructure.Persistance.DbInitializers
+namespace Infrastructure.Persistence.DbInitializers
 {
     internal class TenantDbInitializer(TenantDbContext tenantDbContext,IServiceProvider serviceProvider) : ITenantDbInitializer
     {

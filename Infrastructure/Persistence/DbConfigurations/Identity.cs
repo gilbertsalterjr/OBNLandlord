@@ -4,7 +4,7 @@ using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Metadata.Builders;
 
-namespace Infrastructure.Persistance.DbConfigurations
+namespace Infrastructure.Persistence.DbConfigurations
 {
     internal class ApplicationUserConfig : IEntityTypeConfiguration<ApplicationUser>
     {

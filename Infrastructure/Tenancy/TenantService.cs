@@ -2,7 +2,7 @@
 using Application.Features.Tenacy.Commands;
 using Application.Features.Tenacy.Models;
 using Finbuckle.MultiTenant;
-using Infrastructure.Persistance.DbInitializers;
+using Infrastructure.Persistence.DbInitializers;
 using Mapster;
 
 namespace Infrastructure.Tenancy

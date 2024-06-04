@@ -17,3 +17,4 @@ C:\Users\gilbe\School\OBNLandlord\Infrastructure\obj\Debug\net8.0\refint\Infrast
 C:\Users\gilbe\School\OBNLandlord\Infrastructure\obj\Debug\net8.0\Infrastructure.pdb
 C:\Users\gilbe\School\OBNLandlord\Infrastructure\obj\Debug\net8.0\Infrastructure.genruntimeconfig.cache
 C:\Users\gilbe\School\OBNLandlord\Infrastructure\obj\Debug\net8.0\ref\Infrastructure.dll
+C:\Users\gilbe\School\OBNLandlord\Infrastructure\obj\Debug\net8.0\Infrastructure.sourcelink.json

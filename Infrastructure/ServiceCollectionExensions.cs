@@ -1,6 +1,6 @@
 ﻿using Infrastructure.Identity;
 using Infrastructure.OpenApi;
-using Infrastructure.Persistance;
+using Infrastructure.Persistence;
 using Infrastructure.Tenancy;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.Extensions.Configuration;
@@ -25,6 +25,7 @@ namespace Infrastructure
         {
             return app
                 .UseCurrentUser()
+                .UseMultitenancy()
                 .UseOpenApiDocumentation();
         }
     }

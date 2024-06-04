@@ -1,5 +1,6 @@
 ﻿using Application.Features.Tenacy;
 using Infrastructure.Identity.Constants;
+using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Http;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
@@ -22,6 +23,12 @@ namespace Infrastructure.Tenancy
                     .WithEFCoreStore<TenantDbContext, OBNTenantInfo>()
                     .Services
                     .AddScoped<ITenantService, TenantService>();
+        }
+
+        internal static IApplicationBuilder UseMultitenancy(this IApplicationBuilder app)
+        {
+            return app
+                .UseMultiTenant();
         }
         
         private static FinbuckleMultiTenantBuilder<OBNTenantInfo> WithCustomQueryStringStrategy(

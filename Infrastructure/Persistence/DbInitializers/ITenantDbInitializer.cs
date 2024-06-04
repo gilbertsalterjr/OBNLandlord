@@ -1,6 +1,6 @@
 ﻿using Infrastructure.Tenancy;
 
-namespace Infrastructure.Persistance.DbInitializers
+namespace Infrastructure.Persistence.DbInitializers
 {
     internal interface ITenantDbInitializer
     {

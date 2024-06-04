@@ -1,6 +1,6 @@
 ﻿using Infrastructure.Identity.Constants;
 using Infrastructure.Identity.Models;
-using Infrastructure.Persistance.Contexts;
+using Infrastructure.Persistence.Contexts;
 using Infrastructure.Tenancy;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore;
@@ -10,7 +10,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Infrastructure.Persistance.DbInitializers
+namespace Infrastructure.Persistence.DbInitializers
 {
     public class ApplicationDbInitializer(
         OBNTenantInfo tenant, 
@@ -44,7 +44,7 @@ namespace Infrastructure.Persistance.DbInitializers
                 //Assign permissions to newly added role
                 if (roleName == RoleConstants.Basic)
                 {
-                    await AssignPermissionsToRole( OBNTenantPermissions.Basic, incomingRole, cancellationToken);
+                    await AssignPermissionsToRole(OBNTenantPermissions.Basic, incomingRole, cancellationToken);
                 }
                 else if (roleName == RoleConstants.Admin)
                 {

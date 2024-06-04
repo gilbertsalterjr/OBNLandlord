@@ -3,7 +3,7 @@ using Infrastructure.Identity.Models;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore;
 
-namespace Infrastructure.Persistance.Contexts
+namespace Infrastructure.Persistence.Contexts
 {
     public abstract class BaseDbContext
         : MultiTenantIdentityDbContext<ApplicationUser, ApplicationRole, string,

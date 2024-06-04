@@ -5,16 +5,18 @@ using Infrastructure.Identity.Auth;
 using Infrastructure.Identity.Auth.Jwt;
 using Infrastructure.Identity.Models;
 using Infrastructure.Identity.Tokens;
-using Infrastructure.Persistance.Contexts;
+using Infrastructure.Persistence.Contexts;
 using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Options;
+using Microsoft.IdentityModel.Tokens;
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Security.Claims;
 using System.Text;
 using System.Threading.Tasks;
 
@@ -63,13 +65,29 @@ namespace Infrastructure.Identity
                 .BindConfiguration("JwtSettings");
             services
                 .AddSingleton<IConfigureOptions<JwtBearerOptions>, ConfigureJwtBearerOptions>();
-            return services
+            services
                 .AddAuthentication(auth =>
                 {
                     auth.DefaultAuthenticateScheme = JwtBearerDefaults.AuthenticationScheme;
                     auth.DefaultChallengeScheme = JwtBearerDefaults.AuthenticationScheme;
-                }).Services;
+                })
+                .AddJwtBearer(options =>
+                {
+                    var jwtSettings = services.BuildServiceProvider().GetRequiredService<IOptions<JwtSettings>>().Value;
+                    byte[] key = Encoding.ASCII.GetBytes(jwtSettings.Key);
 
+                    options.TokenValidationParameters = new TokenValidationParameters
+                    {
+                        ValidateIssuerSigningKey = true,
+                        IssuerSigningKey = new SymmetricSecurityKey(key),
+                        ValidateIssuer = false,
+                        ValidateAudience = false,
+                        ClockSkew = TimeSpan.Zero,
+                        RoleClaimType = ClaimTypes.Role,
+                        ValidateLifetime = false
+                    };
+                });
+            return services;
         }
     }
 }

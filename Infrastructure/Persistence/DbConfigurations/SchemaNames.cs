@@ -1,4 +1,4 @@
-﻿namespace Infrastructure.Persistance.DbConfigurations
+﻿namespace Infrastructure.Persistence.DbConfigurations
 {
     internal class SchemaNames
     {

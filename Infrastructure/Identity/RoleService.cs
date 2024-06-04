@@ -3,7 +3,7 @@ using Application.Features.Identity.Roles;
 using Finbuckle.MultiTenant;
 using Infrastructure.Identity.Constants;
 using Infrastructure.Identity.Models;
-using Infrastructure.Persistance.Contexts;
+using Infrastructure.Persistence.Contexts;
 using Infrastructure.Tenancy;
 using Mapster;
 using Microsoft.AspNetCore.Identity;
