@@ -4,11 +4,11 @@ namespace Infrastructure.Identity.Constants
 {
     public static class OBNTenantAction
     {
-        public static string View = nameof(View);
-        public static string Create = nameof(Create);
-        public static string Update = nameof(Update);
-        public static string Delete = nameof(Delete);
-        public static string UpgradeSubscription = nameof(UpgradeSubscription);
+        public const string View = nameof(View);
+        public const string Create = nameof(Create);
+        public const string Update = nameof(Update);
+        public const string Delete = nameof(Delete);
+        public const string UpgradeSubscription = nameof(UpgradeSubscription);
     }
     public static class OBNTenantFeature
     {

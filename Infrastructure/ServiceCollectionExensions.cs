@@ -24,8 +24,10 @@ namespace Infrastructure
         public static IApplicationBuilder UserInfrastructure(this IApplicationBuilder app)
         {
             return app
+                .UseAuthentication()
                 .UseCurrentUser()
                 .UseMultitenancy()
+                .UseAuthorization()
                 .UseOpenApiDocumentation();
         }
     }
