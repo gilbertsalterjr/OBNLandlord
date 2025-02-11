@@ -176,3 +176,7 @@ C:\Users\gilbe\School\OBNLandlord\WebApi\bin\Debug\net8.0\FluentValidation.Depen
 C:\Users\gilbe\School\OBNLandlord\WebApi\bin\Debug\net8.0\MediatR.dll
 C:\Users\gilbe\School\OBNLandlord\WebApi\bin\Debug\net8.0\MediatR.Contracts.dll
 C:\Users\gilbe\School\OBNLandlord\WebApi\obj\Debug\net8.0\WebApi.sourcelink.json
+C:\Users\gilbe\School\OBNLandlord\WebApi\bin\Debug\net8.0\WebApi.staticwebassets.endpoints.json
+C:\Users\gilbe\School\OBNLandlord\WebApi\obj\Debug\net8.0\staticwebassets.build.endpoints.json
+C:\Users\gilbe\School\OBNLandlord\WebApi\obj\Debug\net8.0\staticwebassets\msbuild.WebApi.Microsoft.AspNetCore.StaticWebAssetEndpoints.props
+C:\Users\gilbe\School\OBNLandlord\WebApi\obj\Debug\net8.0\staticwebassets.upToDateCheck.txt

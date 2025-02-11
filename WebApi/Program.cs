@@ -29,7 +29,9 @@ namespace WebApi
             
             app.UseHttpsRedirection();
 
-            //app.UseAuthorization();            
+            //app.UseAuthorization();
+         
+            app.UseMiddleware<ErrorHandlingMiddleware>();
 
             app.MapControllers();
 

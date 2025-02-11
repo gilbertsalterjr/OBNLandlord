@@ -26,8 +26,20 @@ namespace Infrastructure.Persistence.DbInitializers
 
         public async Task InitializeDatabaseAsync(CancellationToken cancellationToken)
         {
-            await InitializeDefaultRolesAsync(cancellationToken);
-            await InitializeAdminUserAsync();
+            if (_applicationDbContext.Database.GetMigrations().Any())
+            {
+                if ((await _applicationDbContext.Database.GetPendingMigrationsAsync()).Any())
+                {
+                    await _applicationDbContext.Database.MigrateAsync(cancellationToken);
+                }
+
+                if (await _applicationDbContext.Database.CanConnectAsync(cancellationToken))
+                {
+                     await InitializeDefaultRolesAsync(cancellationToken);
+                     await InitializeAdminUserAsync();
+                }
+            }
+            
         }
 
         public async Task InitializeDefaultRolesAsync(CancellationToken cancellationToken)
@@ -47,8 +59,13 @@ namespace Infrastructure.Persistence.DbInitializers
                     await AssignPermissionsToRole(OBNTenantPermissions.Basic, incomingRole, cancellationToken);
                 }
                 else if (roleName == RoleConstants.Admin)
-                {
+                { 
                     await AssignPermissionsToRole(OBNTenantPermissions.Admin, incomingRole, cancellationToken);
+                    if (_tenant.Id == TenancyConstants.Root.Id)
+                    {
+                        await AssignPermissionsToRole(OBNTenantPermissions.Root, incomingRole, cancellationToken);
+                    }
+                   
                 }
             }
         }

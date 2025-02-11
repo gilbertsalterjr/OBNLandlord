@@ -1,5 +1,4 @@
-﻿using Application.Features.Tenacy.Commands;
-using Application.Features.Tenacy.Models;
+﻿using Application.Features.Tenacy.Models;
 using System;
 using System.Collections.Generic;
 using System.Linq;

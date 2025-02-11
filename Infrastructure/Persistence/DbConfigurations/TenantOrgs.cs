@@ -21,7 +21,7 @@ namespace Infrastructure.Persistence.DbConfigurations
             builder
                 .Property(t => t.Name)
                 .IsRequired()
-                .HasMaxLength(60);
+                .HasMaxLength(200);
         }
     }
 }

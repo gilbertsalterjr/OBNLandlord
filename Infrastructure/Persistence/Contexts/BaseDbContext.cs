@@ -1,7 +1,9 @@
 ﻿using Finbuckle.MultiTenant;
 using Infrastructure.Identity.Models;
+using Infrastructure.Tenancy;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore;
+using System.Reflection;
 
 namespace Infrastructure.Persistence.Contexts
 {
@@ -20,6 +22,19 @@ namespace Infrastructure.Persistence.Contexts
             base.OnModelCreating(builder);
 
             builder.ApplyConfigurationsFromAssembly(GetType().Assembly);
+        }
+
+        protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
+        {
+            base.OnConfiguring(optionsBuilder);
+
+            if (!string.IsNullOrEmpty(TenantInfo.ConnectionString))
+            {
+                optionsBuilder.UseSqlServer(TenantInfo.ConnectionString, options =>
+                {
+                    options.MigrationsAssembly(Assembly.GetExecutingAssembly().FullName);
+                });
+            }
         }
 
     }

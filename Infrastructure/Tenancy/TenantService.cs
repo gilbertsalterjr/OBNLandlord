@@ -1,17 +1,19 @@
 ﻿using Application.Features.Tenacy;
-using Application.Features.Tenacy.Commands;
 using Application.Features.Tenacy.Models;
 using Finbuckle.MultiTenant;
 using Infrastructure.Persistence.DbInitializers;
 using Mapster;
+using Microsoft.Extensions.DependencyInjection;
 
 namespace Infrastructure.Tenancy
 {
     public class TenantService(IMultiTenantStore<OBNTenantInfo> tenantStore,
-        ApplicationDbInitializer applicationDbInitializer) : ITenantService
+        ApplicationDbInitializer applicationDbInitializer,
+        IServiceProvider serviceProvider) : ITenantService
     {
         private readonly IMultiTenantStore<OBNTenantInfo> _tenantStore = tenantStore;
         private readonly ApplicationDbInitializer _applicationDbInitializer = applicationDbInitializer;
+        private readonly IServiceProvider _serviceProvider = serviceProvider;
 
         public async Task<string> ActivateAsync(string id)
         {
@@ -29,6 +31,7 @@ namespace Infrastructure.Tenancy
             var newTenant = new OBNTenantInfo 
             { 
                 Id = createTenant.Identifier,
+                Identifier = createTenant.Identifier,
                 Name = createTenant.Name, 
                 ConnectionString = createTenant.ConnectionString,
                 AdminEmail = createTenant.AdminEmail,
@@ -42,7 +45,14 @@ namespace Infrastructure.Tenancy
 
             try
             {
-                await _applicationDbInitializer.InitializeDatabaseAsync(ct);
+                using var scope = _serviceProvider.CreateScope();
+                _serviceProvider.GetRequiredService<IMultiTenantContextAccessor>()
+                    .MultiTenantContext = new MultiTenantContext<OBNTenantInfo>()
+                    {
+                        TenantInfo = newTenant
+                    };
+                await scope.ServiceProvider.GetRequiredService<ApplicationDbInitializer>()
+                    .InitializeDatabaseAsync(ct);
             }
             catch (Exception)
             {
