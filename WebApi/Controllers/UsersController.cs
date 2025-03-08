@@ -14,7 +14,8 @@ namespace WebApi.Controllers
     public class UsersController : BaseApiController
     {
         [HttpPost("register")]
-        [AllowAnonymous]
+        //[AllowAnonymous]
+        [ShouldHavePermission(OBNTenantAction.Create, OBNTenantFeature.Users)]
         public async Task<IActionResult> RegisterUserAsync([FromBody] CreateUserRequest createUserRequest)
         {
             var response = await Sender.Send(new CreateUserCommand { CreateUserRequest = createUserRequest });

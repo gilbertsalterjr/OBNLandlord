@@ -67,10 +67,13 @@ namespace Infrastructure.Identity
         {
             if (_principal is not null)
             {
-                throw new ConflictException("Invalid operation on claim.");
+                _principal = principal;
+                
             }
-            
-            _principal = principal;
+
+            throw new ConflictException("Invalid operation on claim.");
         }
+
+       
     }
 }

@@ -28,7 +28,7 @@ namespace Infrastructure.Persistence.Contexts
         {
             base.OnConfiguring(optionsBuilder);
 
-            if (!string.IsNullOrEmpty(TenantInfo.ConnectionString))
+            if (!string.IsNullOrEmpty(TenantInfo?.ConnectionString))
             {
                 optionsBuilder.UseSqlServer(TenantInfo.ConnectionString, options =>
                 {
